@@ -18,8 +18,22 @@ var commentRoutes = require("./routes/comments"),
 
 //mongo connect + app config
 
+const username = "admin";
+const password = "Lucky%4012345";
+const cluster = "cluster0.vllfgsa";
+const dbname = "travelDB";
+
+mongoose.connect(
+    `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`, {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    }
+);
+
+
 //mongoose.connect("mongodb://localhost/travel_camp_v11", { useMongoClient: true });
-mongoose.connect("mongodb+srv://admin:Lucky%4012345@cluster0.vllfgsa.mongodb.net/travelDB", { useNewUrlParser: true });
+//mongoose.connect("mongodb+srv://admin:Lucky%4012345@cluster0.vllfgsa.mongodb.net/travelDB", { useNewUrlParser: true });
 
 mongoose.Promise = global.Promise;
 app.set("view engine", "ejs");
